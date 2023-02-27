@@ -7,6 +7,7 @@
 #include "Camera/CameraComponent.h"
 #include "AmmoCount.h"
 #include "Components/TextBlock.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 AVacuumGun::AVacuumGun()
@@ -215,7 +216,8 @@ void AVacuumGun::FireAmmo()
 		{
 			Execute_GetFired(SpawnedVacuumable);
 			SpawnedVacuumableMesh->AddImpulse(LuanchDirection * AmmoLaunchVelocity, FName(""), true);
-		}		
+		}
+		PlayFireSound();
 	}
 }
 FVector AVacuumGun::GetTraceStartLocation()
@@ -257,6 +259,14 @@ void AVacuumGun::InitializeAmmoCounterWidget()
 			AmmoCountWidget = Cast<UAmmoCount>(AmmoCountWidgetClass);
 			UpdateAmmoCounterWidget();
 		}
+	}
+}
+
+void AVacuumGun::PlayFireSound()
+{
+	if (FireSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
 	}
 }
 

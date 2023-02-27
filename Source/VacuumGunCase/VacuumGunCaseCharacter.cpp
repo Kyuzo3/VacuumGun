@@ -109,6 +109,7 @@ void AVacuumGunCaseCharacter::StopVacuum()
 
 void AVacuumGunCaseCharacter::FireVacuumGun()
 {
+	PlayFireMontage();
 	VacuumGun->FireAmmo();
 }
 
@@ -118,5 +119,17 @@ void AVacuumGunCaseCharacter::AddCrosshairToScreen()
 	{
 		UUserWidget* CrosshairWidgetInstance = CreateWidget<UUserWidget>(GetWorld()->GetFirstPlayerController(), CrosshairWidget);
 		CrosshairWidgetInstance->AddToViewport();
+	}
+}
+
+void AVacuumGunCaseCharacter::PlayFireMontage()
+{
+	if (VacuumGun->CanFire())
+	{
+		UAnimInstance* AnimInstance = Mesh1P->GetAnimInstance();
+		if (AnimInstance && FireMontage)
+		{
+			AnimInstance->Montage_Play(FireMontage);
+		}
 	}
 }

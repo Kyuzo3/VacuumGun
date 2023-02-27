@@ -26,6 +26,8 @@ public:
 
 	void FireAmmo();
 
+	bool CanFire();
+
 	UFUNCTION(BlueprintCallable)
 	FVector GetMuzzleLocation();
 
@@ -61,7 +63,7 @@ protected:
 
 	bool CanAbsorbThisActor(FHitResult HitResult);
 
-	bool CanFire();
+	void PlayFireSound();
 
 	FVector GetTraceStartLocation();
 
@@ -123,6 +125,9 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
 	float AmmoLaunchVelocity = 200.f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
+	USoundBase* FireSound;
 
 	UPROPERTY(EditAnywhere, Category = "Widgets")
 	TSubclassOf<UUserWidget> AmmoCountClass;

@@ -53,6 +53,9 @@ private:
 
 	void AddCrosshairToScreen();
 
+	UFUNCTION(BlueprintCallable)
+	void PlayFireMontage();
+
 	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
 	USkeletalMeshComponent* Mesh1P;
 
@@ -88,6 +91,9 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = "Widgets")
 	TSubclassOf<UUserWidget> CrosshairWidget;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat", meta = (AllowPrivateAccess = "true"))
+	UAnimMontage* FireMontage;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Combat", meta = (AllowPrivateAccess = "true"))
 	bool bHasRifle;
