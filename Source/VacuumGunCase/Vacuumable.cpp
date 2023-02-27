@@ -18,11 +18,8 @@ AVacuumable::AVacuumable()
 
 void AVacuumable::BeginPlay()
 {
-	Super::BeginPlay();
-	Mesh->OnComponentHit.AddDynamic(this, &AVacuumable::OnHit);
-	
+	Super::BeginPlay();	
 	MeshOriginalSize = GetActorScale();
-
 	SetTimelineFunctions();
 }
 
@@ -52,6 +49,7 @@ void AVacuumable::GetFired_Implementation()
 {
 	DisableVacuumability();
 	Mesh->SetNotifyRigidBodyCollision(true);
+	Mesh->OnComponentHit.AddDynamic(this, &AVacuumable::OnHit);
 	FTimerHandle TimerHandle;
 	GetWorldTimerManager().SetTimer(TimerHandle, this, &AVacuumable::EnableVacuumability, ReVacuumabilityResetTime);
 
