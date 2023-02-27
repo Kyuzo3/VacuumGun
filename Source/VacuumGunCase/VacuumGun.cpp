@@ -104,11 +104,11 @@ void AVacuumGun::PullAndAbsorb(float DeltaTime)
 			/* Uncomment the if check below if you want to lower / cancel the object's velocity when it gets hit by the vacuum for the first time (if it wasn't hit by it lastframe).
 			 * Since the object's velocity will be lowered/canceled it will stick to vacuum more easily. I don't like it because it feels more like a gravity gun when you cancel object's velocity.
 			 */
-			if (!LastFrameHitActors.Contains(HitResult.GetActor()))
+			/*if (!LastFrameHitActors.Contains(HitResult.GetActor()))
 			{				
 				UPrimitiveComponent* VacuumableMesh = Execute_GetVacuumableMesh(HitResult.GetActor());
 				VacuumableMesh->SetPhysicsLinearVelocity(VacuumableMesh->GetPhysicsLinearVelocity() / 5.f);				
-			}
+			}*/
 			
 			if (CanPlayerSeeThisObject(HitResult))
 			{
