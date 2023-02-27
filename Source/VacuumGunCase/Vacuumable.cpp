@@ -86,6 +86,7 @@ void AVacuumable::ShrinkDownFinished()
 	if (VacuumGun)
 	{
 		VacuumGun->Execute_AddToAmmo(TargetVacuumGun, this);
+		
 		//calling destroy or lifespan here, turns ammo array index to null so I destroy this actor while firing
 		//SetLifeSpan(1.f);
 	}

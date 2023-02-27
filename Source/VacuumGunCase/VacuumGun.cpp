@@ -39,9 +39,11 @@ void AVacuumGun::AddToAmmo_Implementation(AVacuumable* Vacuumable)
 	if (Vacuumable)
 	{
 		Ammo.Add(Vacuumable);
-		UpdateAmmoCounterWidget();
+		PlayAbsorbSound();
 	}
 }
+
+
 
 void AVacuumGun::EnableVacuuming(bool ShouldVacuum)
 {
@@ -275,6 +277,15 @@ void AVacuumGun::UpdateAmmoCounterWidget()
 	if (AmmoCountWidget)
 	{
 		AmmoCountWidget->SetAmmoText(Ammo.Num());
+	}
+}
+
+void AVacuumGun::PlayAbsorbSound()
+{
+	UpdateAmmoCounterWidget();
+	if (PopSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(this, PopSound, GetActorLocation());
 	}
 }
 

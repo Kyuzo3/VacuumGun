@@ -17,7 +17,7 @@ class VACUUMGUNCASE_API AVacuumGun : public AActor, public IVacuumInterface
 public:
 
 	/*VacuumableInterface*/
-	void AddToAmmo_Implementation(AVacuumable* Vacuumable);
+	void AddToAmmo_Implementation(AVacuumable* Vacuumable);	
 	/*VacuumableInterface*/
 
 	void EnableVacuuming(bool ShouldVacuum);
@@ -64,6 +64,8 @@ protected:
 	bool CanAbsorbThisActor(FHitResult HitResult);
 
 	void PlayFireSound();
+
+	void PlayAbsorbSound();
 
 	FVector GetTraceStartLocation();
 
@@ -128,6 +130,9 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
 	USoundBase* FireSound;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
+	USoundBase* PopSound;
 
 	UPROPERTY(EditAnywhere, Category = "Widgets")
 	TSubclassOf<UUserWidget> AmmoCountClass;
